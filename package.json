@@ -1,0 +1,8 @@
+{
+  "name": "flyrank-ai-settings-form",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/form.test.js"
+  }
+}
