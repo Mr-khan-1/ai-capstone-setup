@@ -15,3 +15,18 @@ This repository contains the setup for my AI Development Capstone project.
 ## Status
 
 Project setup completed.
+
+## Prerequisites
+
+Before running this project, make sure you have:
+
+- Node.js (LTS)
+- Git
+- Visual Studio Code
+- Claude Code
+
+## Installation
+
+```bash
+npm install
+```
