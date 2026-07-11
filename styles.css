@@ -73,25 +73,36 @@ label {
 }
 
 input,
+select,
 button {
   font: inherit;
 }
 
-input {
+input,
+select {
   border: 1px solid #d1d9e6;
   border-radius: 12px;
   padding: 12px 14px;
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
-input:focus {
+input:focus,
+select:focus {
   outline: none;
   border-color: #4f46e5;
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
 }
 
-input[aria-invalid="true"] {
+input[aria-invalid="true"],
+input.invalid,
+select.invalid {
   border-color: #dc2626;
+}
+
+.hint {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 
 .error {
@@ -99,6 +110,14 @@ input[aria-invalid="true"] {
   margin: 0;
   color: #dc2626;
   font-size: 0.92rem;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: #334155;
 }
 
 button {
@@ -123,7 +142,8 @@ button:not(:disabled):hover {
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
 }
 
-.status {
+.status,
+.success {
   min-height: 1.25rem;
   margin: 0;
   color: #047857;
