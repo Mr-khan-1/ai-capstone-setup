@@ -20,7 +20,7 @@ body {
 }
 
 .page {
-  width: min(100%, 480px);
+  width: min(100%, 540px);
 }
 
 .card {
@@ -31,10 +31,10 @@ body {
 }
 
 .eyebrow {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: #4f46e5;
 }
@@ -44,7 +44,7 @@ h1 {
   font-size: 1.75rem;
 }
 
-.intro {
+.subtitle {
   margin: 8px 0 0;
   color: #5b6785;
 }
@@ -55,17 +55,9 @@ form {
   gap: 16px;
 }
 
-.field {
+.field-group {
   display: grid;
   gap: 6px;
-}
-
-.field--checkbox {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-  color: #334155;
 }
 
 label {
@@ -93,7 +85,6 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.18);
 }
 
-input[aria-invalid="true"],
 input.invalid,
 select.invalid {
   border-color: #dc2626;
@@ -109,7 +100,7 @@ select.invalid {
   min-height: 1rem;
   margin: 0;
   color: #dc2626;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .checkbox-row {
@@ -131,21 +122,14 @@ button {
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-  box-shadow: none;
-}
-
-button:not(:disabled):hover {
+button:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
 }
 
-.status,
 .success {
-  min-height: 1.25rem;
   margin: 0;
+  min-height: 1.25rem;
   color: #047857;
   font-weight: 600;
 }

@@ -9,36 +9,60 @@
   <body>
     <main class="page">
       <section class="card" aria-labelledby="settings-title">
-        <p class="eyebrow">Preferences</p>
-        <h1 id="settings-title">Settings</h1>
-        <p class="intro">Keep your profile details current and decide whether you want updates.</p>
+        <div class="card__header">
+          <p class="eyebrow">Preferences</p>
+          <h1 id="settings-title">Account settings</h1>
+          <p class="subtitle">Update your profile details and keep your account secure.</p>
+        </div>
 
         <form id="settings-form" novalidate>
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" placeholder="Jordan Lee" />
-            <p id="name-error" class="error" role="alert"></p>
+          <div class="field-group">
+            <label for="fullName">Full name</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Jordan Lee" />
+            <p class="error" id="fullName-error" aria-live="polite"></p>
           </div>
 
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" />
-            <p id="email-error" class="error" role="alert"></p>
+          <div class="field-group">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" />
+            <p class="error" id="email-error" aria-live="polite"></p>
           </div>
 
-          <div class="field">
+          <div class="field-group">
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" autocomplete="new-password" placeholder="At least 8 characters" />
-            <p id="password-error" class="error" role="alert"></p>
+            <input id="password" name="password" type="password" placeholder="Create a strong password" />
+            <p class="hint">Use at least 8 characters with one uppercase letter, one number, and one symbol.</p>
+            <p class="error" id="password-error" aria-live="polite"></p>
           </div>
 
-          <div class="field field--checkbox">
-            <input id="notifications" name="notifications" type="checkbox" />
-            <label for="notifications">Send me notifications</label>
+          <div class="field-group">
+            <label for="confirmPassword">Confirm password</label>
+            <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Re-enter your password" />
+            <p class="error" id="confirmPassword-error" aria-live="polite"></p>
           </div>
 
-          <button id="submit-button" type="submit" disabled>Save settings</button>
-          <p id="form-status" class="status" role="status" aria-live="polite"></p>
+          <div class="field-group">
+            <label for="timezone">Timezone</label>
+            <select id="timezone" name="timezone">
+              <option value="">Select your timezone</option>
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">Eastern Time</option>
+              <option value="America/Chicago">Central Time</option>
+              <option value="America/Denver">Mountain Time</option>
+              <option value="America/Los_Angeles">Pacific Time</option>
+              <option value="Europe/London">London</option>
+              <option value="Europe/Paris">Paris</option>
+            </select>
+            <p class="error" id="timezone-error" aria-live="polite"></p>
+          </div>
+
+          <label class="checkbox-row" for="marketing">
+            <input id="marketing" name="marketing" type="checkbox" />
+            <span>Send product updates and occasional tips.</span>
+          </label>
+
+          <button type="submit">Save settings</button>
+          <p class="success" id="form-success" aria-live="polite"></p>
         </form>
       </section>
     </main>
