@@ -19,3 +19,6 @@
 - Keep functions small and readable.
 - Explain AI-generated code before using it.
 - Update documentation whenever features change.
+- Use precise prompts with file references, constraints, and verification steps.
+- Prefer accessible UI patterns with labels, error messaging, and tests.
+- Validate edge cases explicitly before considering a feature complete.
