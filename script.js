@@ -155,34 +155,65 @@ function setError(field, message) {
   }
 }
 
-function validateField(field) {
-  const message = validators[field.name](field.value);
-  setError(field, message);
-  return !message;
+function updateFieldState(fieldName) {
+  const input = document.getElementById(fieldName);
+  const errorElement = document.getElementById(`${fieldName}-error`);
+  const message = touchedFields.has(fieldName) ? validateField(fieldName, input.value) : '';
+
+  input.setAttribute('aria-describedby', `${fieldName}-error`);
+  input.setAttribute('aria-invalid', message ? 'true' : 'false');
+  errorElement.textContent = message;
 }
 
-[fullName, email, password, confirmPassword, timezone].forEach((field) => {
-  field.addEventListener('input', () => {
-    validateField(field);
-    if (field === password || field === confirmPassword) {
-      validateField(confirmPassword);
-    }
+function isFormValid() {
+  return fields.every((input) => !validateField(input.name, input.value));
+}
+
+function updateSubmitState() {
+  submitButton.disabled = !isFormValid();
+}
+
+function markTouched(fieldName) {
+  touchedFields.add(fieldName);
+  updateFieldState(fieldName);
+  updateSubmitState();
+}
+
+fields.forEach((input) => {
+  input.addEventListener('blur', () => {
+    markTouched(input.name);
   });
 
-  field.addEventListener('change', () => {
-    validateField(field);
+  input.addEventListener('input', () => {
+    updateSubmitState();
   });
+});
+
+notificationsInput.addEventListener('change', () => {
+  updateSubmitState();
 });
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  successMessage.textContent = '';
+  statusMessage.textContent = '';
 
-  const fields = [fullName, email, password, confirmPassword, timezone];
-  const isValid = fields.every((field) => validateField(field));
+  fields.forEach((input) => {
+    touchedFields.add(input.name);
+    updateFieldState(input.name);
+  });
 
-  if (isValid) {
-    successMessage.textContent = 'Settings saved successfully.';
-    form.reset();
+  if (!isFormValid()) {
+    updateSubmitState();
+    statusMessage.textContent = 'Please fix the highlighted fields.';
+    return;
   }
+
+  const nameValue = nameInput.value.trim();
+  const notificationsEnabled = notificationsInput.checked;
+  statusMessage.textContent = `Settings saved for ${nameValue}${notificationsEnabled ? ' with notifications enabled.' : '.'}`;
+  form.reset();
+  touchedFields.clear();
+  updateSubmitState();
 });
+
+updateSubmitState();

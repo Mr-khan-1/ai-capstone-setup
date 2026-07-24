@@ -39,7 +39,7 @@ body {
   margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: #4f46e5;
 }
@@ -160,8 +160,8 @@ button:hover {
   min-height: 1.25rem;
   margin: 0;
 .success {
-  margin: 0;
   min-height: 1.25rem;
+  margin: 0;
   color: #047857;
   font-weight: 600;
 }
