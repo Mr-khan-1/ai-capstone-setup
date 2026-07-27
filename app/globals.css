@@ -123,9 +123,48 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: #050505 !important;
+    color: #e5e5e5 !important;
+    font-family: var(--font-geist-sans), sans-serif;
+    /* Create a glowing radial mesh background */
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 85% 30%, rgba(147, 51, 234, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, rgba(56, 189, 248, 0.1) 0%, transparent 50%) !important;
+    background-attachment: fixed !important;
   }
   html {
     @apply font-sans;
+    background-color: #050505;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background-color: rgba(20, 20, 22, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .glass-input {
+    background-color: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .user-bubble {
+    background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%);
+    box-shadow: 0 4px 20px rgba(147, 51, 234, 0.3);
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

@@ -32,21 +32,21 @@ export function ChatInput({ input, handleInputChange, handleSubmit, isLoading, s
   };
 
   return (
-    <div className="w-full bg-white border-t border-slate-200 p-4 md:p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.02)]">
+    <div className="w-full relative drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
         {isLoading && (
           <button
             onClick={stop}
-            className="mb-4 flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium rounded-full transition-colors border border-slate-200 shadow-sm"
+            className="absolute -top-14 flex items-center gap-2 px-5 py-2 glass-panel text-slate-200 text-sm font-medium rounded-full transition-all hover:bg-white/10 hover:-translate-y-0.5 shadow-lg shadow-purple-500/10"
           >
-            <Square className="w-4 h-4 fill-slate-700" />
+            <Square className="w-4 h-4 fill-slate-300" />
             Stop generating
           </button>
         )}
 
         <form 
           onSubmit={handleSubmit}
-          className="relative w-full flex items-end gap-2 bg-white border border-slate-300 rounded-2xl shadow-sm overflow-hidden focus-within:ring-2 focus-within:ring-blue-500/20 focus-within:border-blue-500 transition-all"
+          className="relative w-full flex items-end gap-2 glass-input rounded-3xl overflow-hidden focus-within:ring-2 focus-within:ring-purple-500/40 focus-within:border-purple-500/50 transition-all shadow-2xl"
         >
           <textarea
             ref={textareaRef}
@@ -54,18 +54,18 @@ export function ChatInput({ input, handleInputChange, handleSubmit, isLoading, s
             onChange={handleInputChange}
             onKeyDown={onKeyDown}
             placeholder="Paste a URL or ask a question about SEO..."
-            className="w-full max-h-[200px] min-h-[56px] py-4 pl-4 pr-14 bg-transparent border-none focus:outline-none focus:ring-0 resize-none text-slate-900"
+            className="w-full max-h-[200px] min-h-[64px] py-5 pl-6 pr-16 bg-transparent border-none focus:outline-none focus:ring-0 resize-none text-white placeholder:text-slate-500"
             rows={1}
           />
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
-            className="absolute right-2 bottom-2 w-10 h-10 flex items-center justify-center bg-blue-600 text-white rounded-xl disabled:bg-slate-200 disabled:text-slate-400 hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="absolute right-3 bottom-3 w-10 h-10 flex items-center justify-center user-bubble text-white rounded-2xl disabled:opacity-50 disabled:grayscale transition-all focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-black hover:scale-105"
           >
-            <Send className="w-5 h-5" />
+            <Send className="w-5 h-5 ml-1" />
           </button>
         </form>
-        <p className="text-xs text-slate-400 mt-3 text-center">
+        <p className="text-xs text-slate-500 mt-4 text-center tracking-wide font-medium">
           SiteScope AI can make mistakes. Please verify critical SEO changes.
         </p>
       </div>
