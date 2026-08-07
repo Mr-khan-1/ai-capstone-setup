@@ -95,6 +95,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ### auditPage
 - **Input:** `{ url: string }`
-- **Output (success):** `{ url, title, description, h1Count, totalImages, imagesMissingAlt }`
+- **Output (success):** `{ url, title, description, h1Count, totalImages, imagesMissingAlt, checks, score }`
 - **Output (failure):** `{ error: string }`
-- **Purpose:** Fetches raw HTML for a given URL and extracts basic SEO/accessibility signals (title tag, meta description, heading count, image alt-text coverage).
+- **Purpose:** Fetches raw HTML for a given URL and extracts basic SEO/accessibility signals (title tag, meta description, heading structure, canonical, viewport, image alt-text coverage).
