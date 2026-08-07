@@ -8,11 +8,15 @@ The goal is to learn how to work effectively with AI coding tools (Claude Code /
 
 ## Weekly Milestones
 
-| Week | Code    | Deliverable                                   | Status      |
-|------|---------|-----------------------------------------------|-------------|
-| 1    | FE-01   | Environment & AI toolchain setup              | ✅ Complete |
-| 2    | FE-03   | AI-assisted workflow drill (vague vs precise)  | 🔄 Active  |
-| 3    | FE-04   | Capstone scaffold (Next.js/React)             | ⬜ Upcoming |
+| Week | Code    | Deliverable                                     | Status      |
+|------|---------|-------------------------------------------------|-------------|
+| 1    | FE-01   | Environment & AI toolchain setup                | ✅ Complete |
+| 2    | FE-03   | AI-assisted workflow drill (vague vs precise)   | ✅ Complete |
+| 3    | FE-04   | Capstone scaffold (Next.js/React)               | ✅ Complete |
+| 4    | FE-05   | Accessible components (Playground)              | ✅ Complete |
+| 4    | FE-06   | AI provider config & chat route handler         | ✅ Complete |
+| 5    | FE-07   | Tool results & structured output in UI          | ✅ Complete |
+| 6    | FE-08   | Future capstone enhancements                    | ⬜ Upcoming |
 
 ## Tech Stack & Prerequisites
 
