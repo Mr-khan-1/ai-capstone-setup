@@ -8,11 +8,17 @@ export const auditPageTool = tool({
   }),
   execute: async ({ url }) => {
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 8000);
+
       const response = await fetch(url, {
         headers: {
-          'User-Agent': 'SiteScope-AI-Bot/1.0',
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         },
+        signal: controller.signal,
       });
+
+      clearTimeout(timeoutId);
 
       if (!response.ok) {
         return { error: `Could not fetch ${url}. It may be unreachable or blocking automated requests.` };
