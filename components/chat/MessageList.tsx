@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Message as AIMessage } from 'ai/react';
+import { Message as AIMessage, CreateMessage } from 'ai/react';
 import { Message } from './Message';
 import { ThinkingIndicator } from './ThinkingIndicator';
 import { ArrowDown } from 'lucide-react';
@@ -7,9 +7,10 @@ import { ArrowDown } from 'lucide-react';
 interface MessageListProps {
   messages: AIMessage[];
   isLoading: boolean;
+  append?: (message: AIMessage | CreateMessage, chatRequestOptions?: any) => Promise<string | null | undefined>;
 }
 
-export function MessageList({ messages, isLoading }: MessageListProps) {
+export function MessageList({ messages, isLoading, append }: MessageListProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isAutoScrollEnabled, setIsAutoScrollEnabled] = useState(true);
 
@@ -56,6 +57,17 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
               <div className="text-center space-y-2">
                 <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 drop-shadow-sm">Awaiting URL...</p>
                 <p className="text-sm text-slate-500 max-w-sm">Paste any link to begin the hyper-audit sequence for SEO, accessibility, and performance.</p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3 mt-4">
+                {['https://example.com', 'https://vercel.com', 'https://github.com'].map((url) => (
+                  <button
+                    key={url}
+                    onClick={() => append?.({ role: 'user', content: `Audit ${url}` })}
+                    className="px-4 py-2 text-sm rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-slate-300 hover:text-white transition-all flex items-center gap-2"
+                  >
+                    {url}
+                  </button>
+                ))}
               </div>
             </div>
           ) : (

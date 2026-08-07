@@ -51,6 +51,18 @@ export function ToolResult({ toolInvocation }: ToolResultProps) {
       );
     }
 
+    if (typeof result.score !== 'number' || !Array.isArray(result.checks)) {
+      return (
+        <div className="my-4 p-5 rounded-xl border border-red-500/30 bg-red-500/10">
+          <div className="flex items-center gap-3 mb-2">
+            <XCircle className="w-5 h-5 text-red-400" />
+            <h3 className="font-semibold text-red-200">Audit Format Error</h3>
+          </div>
+          <p className="text-red-300 text-sm">The tool returned an unexpected result format.</p>
+        </div>
+      );
+    }
+
     // output-available (success)
     const scoreColor = result.score >= 80 ? 'text-emerald-400' : result.score >= 50 ? 'text-amber-400' : 'text-red-400';
     const scoreBorder = result.score >= 80 ? 'border-emerald-500/30' : result.score >= 50 ? 'border-amber-500/30' : 'border-red-500/30';

@@ -31,6 +31,13 @@ export function ChatInput({ input, handleInputChange, handleSubmit, isLoading, s
     }
   };
 
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!isLoading && input.trim()) {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className="w-full relative drop-shadow-[0_0_30px_rgba(0,0,0,0.8)]">
       <div className="max-w-4xl mx-auto flex flex-col items-center">
@@ -45,7 +52,7 @@ export function ChatInput({ input, handleInputChange, handleSubmit, isLoading, s
         )}
 
         <form 
-          onSubmit={handleSubmit}
+          onSubmit={handleFormSubmit}
           className="relative w-full flex items-end gap-2 glass-input rounded-3xl overflow-hidden focus-within:ring-2 focus-within:ring-purple-500/40 focus-within:border-purple-500/50 transition-all shadow-2xl"
         >
           <textarea
