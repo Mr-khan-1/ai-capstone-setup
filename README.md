@@ -86,3 +86,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## AI Tools
+
+### auditPage
+- **Input:** `{ url: string }`
+- **Output (success):** `{ url, title, description, h1Count, totalImages, imagesMissingAlt }`
+- **Output (failure):** `{ error: string }`
+- **Purpose:** Fetches raw HTML for a given URL and extracts basic SEO/accessibility signals (title tag, meta description, heading count, image alt-text coverage).

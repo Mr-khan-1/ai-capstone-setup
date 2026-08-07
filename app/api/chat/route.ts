@@ -1,5 +1,6 @@
 import { streamText } from 'ai';
 import { AI_CONFIG } from '@/lib/ai/config';
+import { auditPageTool } from '@/lib/ai/tools';
 
 export async function POST(req: Request) {
   try {
@@ -12,6 +13,7 @@ export async function POST(req: Request) {
       messages,
       temperature: AI_CONFIG.temperature,
       maxTokens: AI_CONFIG.maxTokens,
+      tools: { auditPage: auditPageTool },
     });
 
     return result.toDataStreamResponse({

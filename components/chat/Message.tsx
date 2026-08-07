@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { User, Sparkles } from 'lucide-react';
 import { Message as AIMessage } from 'ai/react';
+import { ToolResult } from './ToolResult';
 
 interface MessageProps {
   message: AIMessage;
@@ -33,19 +34,27 @@ export function Message({ message }: MessageProps) {
         {isUser ? (
           <div className="whitespace-pre-wrap">{message.content}</div>
         ) : (
-          <div className="prose prose-invert max-w-none prose-sm md:prose-base 
-              prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-white 
-              prose-a:text-purple-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-purple-300
-              prose-p:leading-relaxed prose-p:mb-4 last:prose-p:mb-0
-              prose-ul:list-disc prose-ul:pl-5
-              prose-ol:list-decimal prose-ol:pl-5
-              prose-strong:font-semibold prose-strong:text-purple-200
-              prose-code:text-purple-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md
-              prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {message.content}
-            </ReactMarkdown>
-          </div>
+          <>
+            {message.content && (
+              <div className="prose prose-invert max-w-none prose-sm md:prose-base 
+                  prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-white 
+                  prose-a:text-purple-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-purple-300
+                  prose-p:leading-relaxed prose-p:mb-4 last:prose-p:mb-0
+                  prose-ul:list-disc prose-ul:pl-5
+                  prose-ol:list-decimal prose-ol:pl-5
+                  prose-strong:font-semibold prose-strong:text-purple-200
+                  prose-code:text-purple-200 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md
+                  prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {message.content}
+                </ReactMarkdown>
+              </div>
+            )}
+            
+            {message.toolInvocations?.map((toolInvocation) => (
+              <ToolResult key={toolInvocation.toolCallId} toolInvocation={toolInvocation} />
+            ))}
+          </>
         )}
       </div>
 
