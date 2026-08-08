@@ -16,8 +16,8 @@ export default function ButtonDemoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black/95 text-slate-200 flex flex-col items-center justify-center p-6 sm:p-12">
-      <div className="w-full max-w-2xl glass-panel p-8 sm:p-12 rounded-3xl relative">
+    <div className="h-full overflow-y-auto bg-black/95 text-slate-200 flex flex-col p-6 sm:p-12">
+      <div className="w-full max-w-2xl glass-panel p-8 sm:p-12 rounded-3xl relative m-auto flex-shrink-0">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 rounded-3xl pointer-events-none" />
         
         <div className="relative z-10 flex flex-col items-center text-center space-y-8">
