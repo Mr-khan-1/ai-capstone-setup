@@ -111,3 +111,32 @@ Feel free to paste any URL into the chat to get a comprehensive, real-time break
 - **Output (success):** `{ url, title, description, h1Count, totalImages, imagesMissingAlt, checks, score }`
 - **Output (failure):** `{ error: string }`
 - **Purpose:** Fetches raw HTML for a given URL and extracts basic SEO/accessibility signals (title tag, meta description, heading structure, canonical, viewport, image alt-text coverage).
+
+## Button Motion System (FE-AA1)
+
+A live demo of a state-machine-driven button with full lifecycle animation
+lives at `/demo/button` (components/demo/SendButton.tsx).
+
+**States:** idle → hover/focus → loading → success/error → back to idle
+
+**Duration & easing choices:**
+- Hover/focus transitions use 150ms ease-out for immediate responsiveness
+  and a tactile feel.
+- The loading-to-success handoff uses a 200ms crossfade on opacity and
+  scale rather than an instant swap, so the icon change reads as
+  continuous rather than jarring.
+- The error state uses a custom shake keyframe capped at 400ms total —
+  long enough to register as intentional negative feedback, short enough
+  not to feel punishing.
+- The button uses a fixed minimum width to contain the fading text/spinner
+  without triggering layout-affecting width animations (only
+  transform/opacity are animated, per the compositor-friendly requirement).
+
+**Accessibility:** Under `prefers-reduced-motion`, the shake animation and
+transition durations are removed, but the visual feedback (red/green tint,
+"Retry" label) still applies instantly — feedback is never silently lost,
+only the motion itself is reduced.
+
+**Forced triggers:** the demo page includes explicit "Force Success" and
+"Force Error" buttons (not just the random 20% failure chance) so reviewers
+can see both outcomes on demand.
