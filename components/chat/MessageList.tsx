@@ -8,9 +8,12 @@ interface MessageListProps {
   messages: AIMessage[];
   isLoading: boolean;
   append?: (message: AIMessage | CreateMessage, chatRequestOptions?: any) => Promise<string | null | undefined>;
+  error?: string | null;
+  onRetry?: () => void;
+  isRetrying?: boolean;
 }
 
-export function MessageList({ messages, isLoading, append }: MessageListProps) {
+export function MessageList({ messages, isLoading, append, error, onRetry, isRetrying }: MessageListProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isAutoScrollEnabled, setIsAutoScrollEnabled] = useState(true);
 
@@ -79,6 +82,22 @@ export function MessageList({ messages, isLoading, append }: MessageListProps) {
           {showThinking && (
             <div className="mt-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
               <ThinkingIndicator />
+            </div>
+          )}
+
+          {error && (
+            <div className="mt-6 glass-panel border border-red-500/50 text-red-400 px-6 py-4 rounded-xl shadow-[0_0_20px_rgba(239,68,68,0.2)] animate-in fade-in slide-in-from-bottom-4 duration-500" role="alert">
+              <strong className="font-bold drop-shadow-md">Connection Error: </strong>
+              <span className="block sm:inline ml-2">{error}</span>
+              {onRetry && (
+                <button 
+                  onClick={onRetry} 
+                  disabled={isRetrying}
+                  className="ml-4 underline text-red-300 hover:text-white transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isRetrying ? 'Retrying...' : 'Retry last message'}
+                </button>
+              )}
             </div>
           )}
         </div>

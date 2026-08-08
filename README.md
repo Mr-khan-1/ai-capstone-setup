@@ -16,7 +16,8 @@ The goal is to learn how to work effectively with AI coding tools (Claude Code /
 | 4    | FE-05   | Accessible components (Playground)              | ✅ Complete |
 | 4    | FE-06   | AI provider config & chat route handler         | ✅ Complete |
 | 5    | FE-07   | Tool results & structured output in UI          | ✅ Complete |
-| 6    | FE-08   | Future capstone enhancements                    | ⬜ Upcoming |
+| 6    | FE-08   | Error boundary, actionable empty state, retry guard | ✅ Complete |
+| 6    | FE-09   | Testing pass — Vitest, RTL, Playwright, CI      | ✅ Complete |
 
 ## Tech Stack & Prerequisites
 
@@ -37,8 +38,25 @@ The goal is to learn how to work effectively with AI coding tools (Claude Code /
 ├── LICENSE
 ├── .gitignore
 ├── archive/           # Week 1-2 Vanilla JS & React drills
+├── components/        # Chat UI and visual components
+├── lib/               # AI config, model, and tools
 └── app/               # Next.js capstone application
+    ├── api/chat/route.ts # AI route handler
+    └── audit/         # Audit tool page
 ```
+
+## Testing
+
+Run component tests locally with:
+```bash
+npm test
+```
+
+Run end-to-end tests locally with:
+```bash
+npm run test:e2e
+```
+*Note: GitHub Actions CI runs the full suite automatically on every push.*
 
 ## Installation
 
