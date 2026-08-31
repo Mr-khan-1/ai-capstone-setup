@@ -1,4 +1,4 @@
 import { google } from '@ai-sdk/google';
 
-// Use the pro model to avoid the high demand limits of the flash-latest endpoint
-export const chatModel = google('gemini-1.5-pro-latest');
+// Using gemini-2.5-flash as it is fully supported by your API key and avoids 'latest' alias demand limits
+export const chatModel = google('gemini-2.5-flash');
