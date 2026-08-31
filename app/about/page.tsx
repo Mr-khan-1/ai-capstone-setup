@@ -2,7 +2,7 @@ import { ShieldCheck, Target, Sparkles, Code2 } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-indigo-500/30">
+    <div className="h-full overflow-y-auto bg-slate-950 text-slate-50 selection:bg-indigo-500/30">
       <div className="relative pt-32 pb-20 px-6 max-w-5xl mx-auto">
         {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-full max-w-2xl h-[30rem] opacity-20 pointer-events-none">

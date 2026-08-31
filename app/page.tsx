@@ -3,7 +3,7 @@ import { ArrowRight, BarChart3, Globe, Zap } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-50 selection:bg-indigo-500/30">
+    <div className="h-full overflow-y-auto bg-slate-950 text-slate-50 selection:bg-indigo-500/30">
       {/* Hero Section */}
       <div className="relative overflow-hidden flex flex-col items-center justify-center pt-32 pb-20 px-6">
         {/* Background Gradients */}
