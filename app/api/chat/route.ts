@@ -13,6 +13,7 @@ export async function POST(req: Request) {
       messages,
       temperature: AI_CONFIG.temperature,
       maxTokens: AI_CONFIG.maxTokens,
+      maxSteps: 5,
       tools: { auditPage: auditPageTool },
     });
 
