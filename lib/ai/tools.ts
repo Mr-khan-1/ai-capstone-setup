@@ -9,7 +9,7 @@ export const auditPageTool = tool({
   execute: async ({ url }) => {
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 8000);
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
 
       const response = await fetch(url, {
         headers: {
@@ -24,7 +24,9 @@ export const auditPageTool = tool({
         return { error: `Could not fetch ${url}. It may be unreachable or blocking automated requests.` };
       }
 
-      const html = await response.text();
+      // Truncate text to 200KB to avoid catastrophic regex backtracking on huge sites
+      const text = await response.text();
+      const html = text.slice(0, 200000);
       
       const checks: Array<{ id: string, label: string, status: "good" | "warning" | "critical", detail: string }> = [];
 

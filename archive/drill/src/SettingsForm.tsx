@@ -120,7 +120,7 @@ export default function SettingsForm({ onSubmit }: SettingsFormProps) {
   return (
     <form onSubmit={handleSubmit} noValidate>
       {/* ---- Name ---- */}
-      <div className="form-group">
+      <div className="field">
         <label htmlFor="settings-name">Name</label>
         <input
           id="settings-name"
@@ -137,7 +137,7 @@ export default function SettingsForm({ onSubmit }: SettingsFormProps) {
       </div>
 
       {/* ---- Email ---- */}
-      <div className="form-group">
+      <div className="field">
         <label htmlFor="settings-email">Email</label>
         <input
           id="settings-email"
@@ -154,7 +154,7 @@ export default function SettingsForm({ onSubmit }: SettingsFormProps) {
       </div>
 
       {/* ---- Password ---- */}
-      <div className="form-group">
+      <div className="field">
         <label htmlFor="settings-password">Password</label>
         <input
           id="settings-password"
@@ -171,19 +171,19 @@ export default function SettingsForm({ onSubmit }: SettingsFormProps) {
       </div>
 
       {/* ---- Notifications ---- */}
-      <div className="form-group checkbox">
+      <div className="field field--checkbox">
+        <input
+          id="settings-notifications"
+          type="checkbox"
+          checked={formData.notifications}
+          onChange={(e) => handleChange('notifications', e.target.checked)}
+        />
         <label htmlFor="settings-notifications">
-          <input
-            id="settings-notifications"
-            type="checkbox"
-            checked={formData.notifications}
-            onChange={(e) => handleChange('notifications', e.target.checked)}
-          />
           Enable notifications
         </label>
       </div>
 
-      <button type="submit">Save Settings</button>
+      <button id="submit-button" type="submit">Save Settings</button>
     </form>
   )
 }
